@@ -58,3 +58,22 @@ painel-chamados/
 ## Autor
 
 Pablo Dilio · [Portfólio](https://hey-pablo.github.io/pablo-dilio-portfolio/) · [LinkedIn](https://www.linkedin.com/in/pablo-dilio-4063991b2)
+
+## Dados e lógica
+
+Os dados são inteiramente fictícios. O gerador usa semente fixa e produz 1.500 chamados em 50 filiais e 60 dias, com mais chamados às segundas-feiras e categorias ponderadas. As datas estão em UTC.
+
+Requer Node.js 20 ou superior. Para gerar os dados e executar os testes:
+
+```sh
+npm run gerar
+npm test
+```
+
+O arquivo gerado é versionado e a execução repetida produz o mesmo conteúdo. Não há variáveis de ambiente necessárias; `.env.example` registra essa condição.
+
+Os módulos ES em `js/` carregam e normalizam as datas, aplicam filtros combinados e calculam indicadores. Os filtros de período aceitam datas `AAAA-MM-DD` e incluem ambos os limites, pela data UTC de abertura.
+
+O SLA divide os chamados resolvidos dentro do prazo pelo total de resolvidos mais os abertos vencidos, multiplicando por 100. Abertos ainda no prazo ficam fora do cálculo; resolução no limite cumpre o prazo. A idade das pendências usa dias completos desde a abertura. As funções que dependem do momento atual recebem `agora` explicitamente. Listas vazias produzem zero ou coleções vazias. As fórmulas completas estão no início de `js/kpis.js`.
+
+A interface, os gráficos e a publicação ainda serão implementados.
