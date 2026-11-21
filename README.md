@@ -1,6 +1,6 @@
 # Painel de Chamados
 
-> **Status: pronto para revisão.** Interface completa com KPIs, gráficos, filtros e tabela.
+> **Status: concluído.** Interface completa com KPIs, gráficos, filtros e tabela.
 
 ## O que é
 
