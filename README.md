@@ -1,5 +1,7 @@
 # Painel de Chamados
 
+> **Demonstração:** https://hey-pablo.github.io/painel-chamados/
+
 > **Status: concluído.** Interface completa com KPIs, gráficos, filtros e tabela.
 
 ## O que é
