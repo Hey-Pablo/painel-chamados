@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de Chamados</title>
+  <meta name="description" content="Painel de indicadores de suporte: volume, SLA, tempo de resolução e pendências, com filtros. Dados fictícios.">
+  <link rel="stylesheet" href="css/estilo.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.js" defer></script>
+</head>
+<body>
+  <header class="cabecalho">
+    <div class="cabecalho__esquerda">
+      <h1>Painel de Chamados</h1>
+      <p class="cabecalho__sub">Indicadores de suporte · 50 filiais · 60 dias · dados fictícios</p>
+    </div>
+    <div id="indicadorEstado" class="estado" role="status" aria-live="polite"></div>
+  </header>
+
+  <main class="conteudo">
+    <section class="filtros" aria-label="Filtros">
+      <label class="campo">
+        <span>De</span>
+        <input type="date" id="filtroDe" name="de" inputmode="numeric">
+      </label>
+      <label class="campo">
+        <span>Até</span>
+        <input type="date" id="filtroAte" name="ate" inputmode="numeric">
+      </label>
+      <label class="campo">
+        <span>Filial</span>
+        <select id="filtroFilial"></select>
+      </label>
+      <label class="campo">
+        <span>Categoria</span>
+        <select id="filtroCategoria"></select>
+      </label>
+      <label class="campo">
+        <span>Prioridade</span>
+        <select id="filtroPrioridade"></select>
+      </label>
+      <button id="boutaoLimpar" type="button" class="botao botao--secundario">Limpar</button>
+    </section>
+
+    <section class="kpis" aria-label="Indicadores" id="kpis"></section>
+
+    <section class="graficos" aria-label="Gráficos">
+      <div class="grafico">
+        <h2>Chamados por dia</h2>
+        <div class="grafico__canvas"><canvas id="graficoDia"></canvas></div>
+      </div>
+      <div class="grafico">
+        <h2>Por categoria</h2>
+        <div class="grafico__canvas"><canvas id="graficoCategoria"></canvas></div>
+      </div>
+      <div class="grafico">
+        <h2>Top 10 filiais</h2>
+        <div class="grafico__canvas"><canvas id="graficoFiliais"></canvas></div>
+      </div>
+      <div class="grafico">
+        <h2>Distribuição por prioridade</h2>
+        <div class="grafico__canvas"><canvas id="graficoPrioridade"></canvas></div>
+      </div>
+      <div class="grafico">
+        <h2>Pendências por idade</h2>
+        <div class="grafico__canvas"><canvas id="graficoPendencias"></canvas></div>
+      </div>
+    </section>
+
+    <section class="tabelaWrapper">
+      <div class="tabelaCabecalho">
+        <h2>Chamados</h2>
+        <label class="busca">
+          <span>Busca</span>
+          <input type="search" id="buscaTabela" placeholder="filial, categoria, prioridade ou id">
+        </label>
+      </div>
+      <div class="tabelaConteiner">
+        <table class="tabela" id="tabelaChamados">
+          <thead id="tabelaCabecalhoTabela"></thead>
+          <tbody id="tabelaCorpo"></tbody>
+        </table>
+      </div>
+      <div class="paginacao" id="paginacao"></div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Dados fictícios · gerados com semente fixa · sem backend · interface estática em HTML, CSS e JavaScript puro.</p>
+  </footer>
+
+  <script type="module" src="js/dados.js"></script>
+  <script type="module" src="js/kpis.js"></script>
+  <script type="module" src="js/filtros.js"></script>
+  <script type="module" src="js/graficos.js"></script>
+  <script type="module" src="js/tabela.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
